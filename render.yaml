@@ -14,8 +14,16 @@ services:
       value: ~16.13.0
     - key: NODE_ENV
       value: production
-    - key: DATABASE_FILENAME
-      value: /data/strapi.db
+    - key: CLOUDINARY_NAME
+      sync: false
+    - key: CLOUDINARY_KEY
+      sync: false
+    - key: CLOUDINARY_SECRET
+      sync: false
+    - key: DATABASE_URL
+      fromDatabase:
+        name: strapi
+        property: connectionString
     - key: JWT_SECRET
       generateValue: true
     - key: API_TOKEN_SALT
@@ -24,10 +32,6 @@ services:
       generateValue: true
     - key: APP_KEYS
       generateValue: true
-    - key: DATABASE_URL
-      fromDatabase:
-        name: strapi
-        property: connectionString
 
 databases:
   - name: strapi
